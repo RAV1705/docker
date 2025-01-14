@@ -3,23 +3,23 @@ version: 0.2
 phases:
   build:
     commands:
-      -apt-get update -y
-      -apt-get install -y docker.io
+      - apt-get update -y
+      - apt-get install -y docker.io
 
-      -aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 221082173021.dkr.ecr.eu-north-1.amazonaws.com
-      -docker build -t second-time .
+      - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 221082173021.dkr.ecr.eu-north-1.amazonaws.com
+      - docker build -t second-time .
 
-      -docker tag second-time:latest 221082173021.dkr.ecr.eu-north-1.amazonaws.com/second-time:latest
+      - docker tag second-time:latest 221082173021.dkr.ecr.eu-north-1.amazonaws.com/second-time:latest
 
-      -docker push 221082173021.dkr.ecr.eu-n.registry.eu-north-1.amazonaws.com/second-time:latest
+      - docker push 221082173021.dkr.ecr.eu-north-1.amazonaws.com/second-time:latest
 
       - |
         echo '[
         {
           "name": "second-time",
           "imageUri": "221082173021.dkr.ecr.eu-north-1.amazonaws.com/second-time:latest"
-         }]' > imagedefinitions.json
+        }]' > imagedefinitions.json
 
 artifacts:
   files:
-  - imagedefinitions.json
+    - imagedefinitions.json
