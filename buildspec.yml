@@ -16,7 +16,7 @@ phases:
       - |
         echo '[
         {
-          "name": "second-time",
+          "name": "Ravi", 
           "imageUri": "221082173021.dkr.ecr.eu-north-1.amazonaws.com/second-time:latest"
         }]' > imagedefinitions.json
 
